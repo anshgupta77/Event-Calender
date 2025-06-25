@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { filterTasksByDate } from '../Utils/TaskUtils';
+// import { filterTasksByDate } from '../Utils/TaskUtils';
 import { getWeekDays } from '../Utils/DateUtils';
 import NavigationHeader from './NavigationHeader';
 import TaskCard from './TaskCard';
 
 
-const DailyView = ({ selectedDate, onDateChange, onDateClick }) => {
-  const tasks = filterTasksByDate(selectedDate);
-  const weekDays = getWeekDays(selectedDate);
+const DailyView = ({events, selectedDate, onDateChange, onDateClick }) => {
   
   const goToPreviousDay = () => {
     const prevDay = new Date(selectedDate);
@@ -22,6 +20,13 @@ const DailyView = ({ selectedDate, onDateChange, onDateClick }) => {
     onDateChange(nextDay);
   };
   
+  const filterTasksByDate = (date) => {
+    const dateStr = date.toISOString().split('T')[0];
+    return events.filter(task => task.date === dateStr);
+  };
+  
+  const tasks = filterTasksByDate(selectedDate);
+  const weekDays = getWeekDays(selectedDate);
   return (
     <div className="bg-white">
       <NavigationHeader 

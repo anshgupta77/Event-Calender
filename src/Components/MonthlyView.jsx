@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { getMonthDays } from '../Utils/DateUtils';
 import NavigationHeader from './NavigationHeader';
-import { filterTasksByDate } from '../Utils/TaskUtils';
+// import { filterTasksByDate } from '../Utils/TaskUtils';
 
-const MonthlyView = ({ currentMonth, onMonthChange, onDateClick }) => {
+const MonthlyView = ({ events, currentMonth, onMonthChange, onDateClick }) => {
   const monthDays = getMonthDays(currentMonth);
   
   const goToPreviousMonth = () => {
@@ -19,6 +19,13 @@ const MonthlyView = ({ currentMonth, onMonthChange, onDateClick }) => {
     onMonthChange(nextMonth);
   };
   
+
+  const filterTasksByDate = (date) => {
+    const dateStr = date.toISOString().split('T')[0];
+    return events.filter(task => task.date === dateStr);
+  };
+
+
   return (
     <div className="bg-white">
       <NavigationHeader 
@@ -50,7 +57,7 @@ const MonthlyView = ({ currentMonth, onMonthChange, onDateClick }) => {
             <div
               key={index}
               className={`min-h-24 p-2 cursor-pointer hover:bg-gray-50 transition-colors border-rounded ${
-                !isCurrentMonth ? 'bg-gray-50' : dayTasks.slice(0, 1).map(task => task.color ? task.color : 'bg-white')
+                !isCurrentMonth ? 'bg-gray-50' : dayTasks?.slice(0, 1).map(task => task.color) || 'bg-white'
               }`}
               onClick={() => onDateClick(day)}
             >
@@ -64,9 +71,11 @@ const MonthlyView = ({ currentMonth, onMonthChange, onDateClick }) => {
               <div className="space-y-1">
                 {dayTasks.slice(0, 2).map(task => (
                   <div key={task.id} className="flex items-center space-x-1">
-                    <span className="text-sm">{task.icon}</span>
+                    <span className="text-sm">{task.icon}<span className="hidden sm:inline text-xs text-gray-500">{task.taskName}-{task.user}</span></span>
+                    
                   </div>
                 ))}
+                
                 {dayTasks.length > 2 && (
                   <div className="text-xs text-gray-500">+{dayTasks.length - 2} more</div>
                 )}

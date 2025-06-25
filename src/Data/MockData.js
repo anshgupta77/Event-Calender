@@ -34,7 +34,7 @@ export const mockData = [
   {
     id: 4,
     user: "Charlie",
-    taskName: "Project Deadline",
+    taskName: "Deadline",
     date: "2025-03-25",
     timeStart: "08:00",
     timeEnd: "12:00",

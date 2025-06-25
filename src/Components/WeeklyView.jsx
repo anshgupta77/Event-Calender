@@ -1,10 +1,10 @@
 import { getWeekDays } from "../Utils/DateUtils";
 import NavigationHeader from "./NavigationHeader"; 
-import { filterTasksByDate } from "../Utils/TaskUtils";
+// import { filterTasksByDate } from "../Utils/TaskUtils";
 import { calculateTaskDuration } from "../Utils/TaskUtils";
 import { formatTime } from "../Utils/DateUtils";
 
-const WeeklyView = ({ selectedDate, onDateChange, onDateClick }) => {
+const WeeklyView = ({ events, selectedDate, onDateChange, onDateClick }) => {
   const weekDays = getWeekDays(selectedDate);
   const hours = Array.from({ length: 16 }, (_, i) => i + 6); // 6AM to 9PM
   
@@ -18,6 +18,11 @@ const WeeklyView = ({ selectedDate, onDateChange, onDateClick }) => {
     const nextWeek = new Date(selectedDate);
     nextWeek.setDate(selectedDate.getDate() + 7);
     onDateChange(nextWeek);
+  };
+
+  const filterTasksByDate = (date) => {
+    const dateStr = date.toISOString().split('T')[0];
+    return events.filter(task => task.date === dateStr);
   };
   
   return (

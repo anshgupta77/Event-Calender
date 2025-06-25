@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useEffect } from 'react';
 
 import DailyView from './Components/DailyView';
 import WeeklyView from './Components/WeeklyView';
@@ -8,7 +8,15 @@ import MonthlyView from './Components/MonthlyView';
 const CalendarApp = () => {
   const [activeView, setActiveView] = useState('Weekly');
   const [selectedDate, setSelectedDate] = useState(new Date(2025, 2, 25)); // March 25, 2025
-  const [currentMonth, setCurrentMonth] = useState(new Date(2025, 2, 1)); // March 2025
+  const [currentMonth, setCurrentMonth] = useState(new Date(2025, 2, 1));// March 2025
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/events")
+      .then((res) => res.json())
+      .then((data) => setEvents(data));
+  }, []);
+
 
   const handleDateClick = (date) => {
     setSelectedDate(date);
@@ -52,6 +60,7 @@ const CalendarApp = () => {
             selectedDate={selectedDate}
             onDateChange={setSelectedDate}
             onDateClick={handleDateClick}
+            events={events}
           />
         )}
         {activeView === 'Weekly' && (
@@ -59,6 +68,7 @@ const CalendarApp = () => {
             selectedDate={selectedDate}
             onDateChange={setSelectedDate}
             onDateClick={handleDateClick}
+            events={events}
           />
         )}
         {activeView === 'Monthly' && (
@@ -66,6 +76,7 @@ const CalendarApp = () => {
             currentMonth={currentMonth}
             onMonthChange={setCurrentMonth}
             onDateClick={handleDateClick}
+            events={events}
           />
         )}
       </div>

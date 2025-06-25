@@ -6,7 +6,8 @@ export const mockData = [
     date: "2025-03-27",
     timeStart: "12:00",
     timeEnd: "13:00",
-    icon: "🎵"
+    icon: "🎵",
+    color: "bg-blue-100"
   },
   {
     id: 2,
@@ -15,7 +16,10 @@ export const mockData = [
     date: "2025-03-27",
     timeStart: "13:00",
     timeEnd: "14:00",
-    icon: "🎵"
+    icon: "🎵",
+    color: "bg-blue-100"
+  
+
   },
   {
     id: 3,
@@ -24,7 +28,8 @@ export const mockData = [
     date: "2025-03-28",
     timeStart: "18:00",
     timeEnd: "21:00",
-    icon: "🎵"
+    icon: "🎵",
+    color: "bg-blue-100"
   },
   {
     id: 4,
@@ -33,7 +38,8 @@ export const mockData = [
     date: "2025-03-25",
     timeStart: "08:00",
     timeEnd: "12:00",
-    icon: "🎵"
+    icon: "🎵",
+    color: "bg-blue-100"
   },
   {
     id: 5,
@@ -42,7 +48,8 @@ export const mockData = [
     date: "2025-03-25",
     timeStart: "14:00",
     timeEnd: "15:30",
-    icon: "🏐"
+    icon: "🏐",
+    color: "bg-orange-100"
   },
   {
     id: 6,
@@ -51,7 +58,8 @@ export const mockData = [
     date: "2025-03-26",
     timeStart: "11:00",
     timeEnd: "12:00",
-    icon: "🪑"
+    icon: "🪑",
+    color: "bg-pink-100"
   },
   {
     id: 7,
@@ -60,6 +68,7 @@ export const mockData = [
     date: "2025-03-27",
     timeStart: "15:00",
     timeEnd: "17:30",
-    icon: "🎵"
+    icon: "🎵",
+    color: "bg-blue-100"
   }
 ];

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { getMonthDays } from '../Utils/DateUtils';
+import NavigationHeader from './NavigationHeader';
+import { filterTasksByDate } from '../Utils/TaskUtils';
 
 const MonthlyView = ({ currentMonth, onMonthChange, onDateClick }) => {
   const monthDays = getMonthDays(currentMonth);
@@ -38,16 +41,16 @@ const MonthlyView = ({ currentMonth, onMonthChange, onDateClick }) => {
       <div className="grid grid-cols-7 gap-px bg-gray-200">
         {monthDays.map((day, index) => {
           const dayTasks = filterTasksByDate(day);
+          console.log(dayTasks);
           const isCurrentMonth = day.getMonth() === currentMonth.getMonth();
           const isToday = day.toDateString() === new Date().toDateString();
           const isWeekend = index % 7 === 0 || index % 7 === 6;
           
           return (
-            <div 
-              key={index} 
-              className={`min-h-24 p-2 cursor-pointer hover:bg-gray-50 transition-colors ${
-                !isCurrentMonth ? 'bg-gray-50' : 
-                isWeekend ? 'bg-blue-100' : 'bg-orange-100'
+            <div
+              key={index}
+              className={`min-h-24 p-2 cursor-pointer hover:bg-gray-50 transition-colors border-rounded ${
+                !isCurrentMonth ? 'bg-gray-50' : dayTasks.slice(0, 1).map(task => task.color ? task.color : 'bg-white')
               }`}
               onClick={() => onDateClick(day)}
             >

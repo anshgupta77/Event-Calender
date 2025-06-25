@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { filterTasksByDate } from '../Utils/TaskUtils';
+import { getWeekDays } from '../Utils/DateUtils';
+import NavigationHeader from './NavigationHeader';
+import TaskCard from './TaskCard';
+
 
 const DailyView = ({ selectedDate, onDateChange, onDateClick }) => {
   const tasks = filterTasksByDate(selectedDate);

@@ -20,20 +20,24 @@ const CalendarApp = () => {
   return (
     <div className="max-w-6xl mx-auto bg-white min-h-screen">
       {/* Header */}
-      <div className="flex items-center justify-between p-6 border-b">
-        <h1 className="text-3xl font-bold text-gray-900">Calendar</h1>
+      <div className="flex items-center justify-between p-6">
+        <h1 className="text-4xl font-bold text-black">Calendar</h1>
+        <button className="flex items-center space-x-2 text-pink-400 font-medium hover:text-pink-500 transition-colors">
+          <span className="text-xl">+</span>
+          <span>New event</span>
+        </button>
       </div>
 
       {/* View tabs */}
-      <div className="flex space-x-8 px-6 py-4 border-b">
+      <div className="flex space-x-0 px-6 pb-4">
         {['Daily', 'Weekly', 'Monthly'].map(view => (
           <button
             key={view}
             onClick={() => setActiveView(view)}
-            className={`font-medium pb-2 transition-colors ${
+            className={`px-6 py-3 font-medium rounded-lg transition-colors mr-2 ${
               activeView === view 
-                ? 'text-blue-600 border-b-2 border-blue-600' 
-                : 'text-gray-500 hover:text-gray-700'
+                ? 'bg-gray-200 text-gray-800' 
+                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
             }`}
           >
             {view}
@@ -70,3 +74,13 @@ const CalendarApp = () => {
 };
 
 export default CalendarApp;
+
+
+
+
+
+
+
+
+
+

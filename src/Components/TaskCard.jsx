@@ -1,4 +1,6 @@
 import { mockData } from "../Data/MockData";
+import { calculateTaskDuration } from "../Utils/TaskUtils";
+import { formatTime } from "../Utils/DateUtils";
 const TaskCard = ({ task, isWeeklyView = false }) => {
   const duration = calculateTaskDuration(task.timeStart, task.timeEnd);
   const cardHeight = isWeeklyView ? Math.max(duration * 48, 48) : 'auto'; // 48px per hour in weekly view
@@ -15,7 +17,7 @@ const TaskCard = ({ task, isWeeklyView = false }) => {
             {formatTime(task.timeStart)} - {formatTime(task.timeEnd)}
           </span>
         </div>
-        <button className="text-gray-400 hover:text-gray-600 text-sm">⋮</button>
+        <button className="text-gray-700 hover:text-gray-600 text-lg">⋮</button>
       </div>
       <div className="flex items-center space-x-2">
         <span className="text-sm">{task.icon}</span>

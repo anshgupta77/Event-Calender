@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 const DailyView = ({ selectedDate, onDateChange, onDateClick }) => {
   const tasks = filterTasksByDate(selectedDate);
   const weekDays = getWeekDays(selectedDate);

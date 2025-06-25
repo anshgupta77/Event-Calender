@@ -1,4 +1,4 @@
-
+import { mockData } from "../Data/MockData";
 const TaskCard = ({ task, isWeeklyView = false }) => {
   const duration = calculateTaskDuration(task.timeStart, task.timeEnd);
   const cardHeight = isWeeklyView ? Math.max(duration * 48, 48) : 'auto'; // 48px per hour in weekly view

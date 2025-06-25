@@ -1,3 +1,9 @@
+import { getWeekDays } from "../Utils/DateUtils";
+import NavigationHeader from "./NavigationHeader"; 
+import { filterTasksByDate } from "../Utils/TaskUtils";
+import { calculateTaskDuration } from "../Utils/TaskUtils";
+import { formatTime } from "../Utils/DateUtils";
+
 const WeeklyView = ({ selectedDate, onDateChange, onDateClick }) => {
   const weekDays = getWeekDays(selectedDate);
   const hours = Array.from({ length: 16 }, (_, i) => i + 6); // 6AM to 9PM
@@ -20,14 +26,7 @@ const WeeklyView = ({ selectedDate, onDateChange, onDateClick }) => {
         currentDate={selectedDate}
         onPrevious={goToPreviousWeek}
         onNext={goToNextWeek}
-        title={`Week of ${weekDays[0].toLocaleDateString('en-US', { 
-          month: 'short', 
-          day: 'numeric' 
-        })} - ${weekDays[6].toLocaleDateString('en-US', { 
-          month: 'short', 
-          day: 'numeric', 
-          year: 'numeric' 
-        })}`}
+
       />
       
       {/* Week header */}

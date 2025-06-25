@@ -1,3 +1,10 @@
+import React, { useState } from 'react';
+
+
+import DailyView from './Components/DailyView';
+import WeeklyView from './Components/WeeklyView';
+import MonthlyView from './Components/MonthlyView';
+
 const CalendarApp = () => {
   const [activeView, setActiveView] = useState('Weekly');
   const [selectedDate, setSelectedDate] = useState(new Date(2025, 2, 25)); // March 25, 2025

@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 const MonthlyView = ({ currentMonth, onMonthChange, onDateClick }) => {
   const monthDays = getMonthDays(currentMonth);
   
